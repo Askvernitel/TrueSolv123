@@ -14,6 +14,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -24,22 +25,6 @@
             "sectionVerticalAlign" : "flex-start"
           },
           "children" : [ {
-            "children" : [ {
-              "attributes" : {
-                "backgroundColor" : "",
-                "isLinkable" : false,
-                "linkAssistiveText" : "",
-                "paddingHorizontal" : "none",
-                "paddingVertical" : "none",
-                "text" : "HIHIHIIHHIIHSDJASFHAJDFH",
-                "textAlign" : "left",
-                "textDecoration" : "{}",
-                "textDisplayInfo" : "{\"textStyle\":\"heading-medium\",\"headingTag\":\"h3\",\"enableOverride\":false}"
-              },
-              "definition" : "dxp_base:textBlock",
-              "id" : "7f3b091f-040e-442a-a496-2a4767488200",
-              "type" : "component"
-            } ],
             "id" : "414afaac-76a7-4be2-9be8-82202a2ba695",
             "name" : "headerSection",
             "title" : "Theme Header",
@@ -59,6 +44,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
