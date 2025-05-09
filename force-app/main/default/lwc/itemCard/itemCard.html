@@ -3,7 +3,12 @@
     <div>
         <lightning-card  variant="Narrow"  title={cardItem.Name__c} icon-name="standard:account" style="width:20px;">
             <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
-            <p class="slds-p-horizontal_small">Card Body Narrow (custom component)</p>
+            <div class="slds-p-horizontal_small">
+
+                <p>{cardItem.Description__c}</p>
+                <p>Family: {cardItem.Family__c}</p>
+                <p>Type: {cardItem.Type__c}</p>
+            </div>
             <p slot="footer">Card Footer</p>
         </lightning-card>
     </div>

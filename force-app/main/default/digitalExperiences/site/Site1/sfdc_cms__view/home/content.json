@@ -9,34 +9,58 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
-            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
             "maxContentWidth" : "",
             "sectionColumnGutterWidth" : "",
-            "sectionConfig" : "{\"UUID\":\"1d9ba861-cbde-44ba-9f04-aec4f8771f8d\",\"columns\":[{\"UUID\":\"71ee4aa0-02a8-4ad7-9f4a-fe92eb0a4e78\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+            "sectionConfig" : "{\"UUID\":\"431f1301-3505-42a7-99e3-1c4aee6a216c\",\"columns\":[{\"UUID\":\"b2b56a50-3a93-4a5d-921d-c3d5b5763800\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
             "sectionMinHeight" : "",
             "sectionVerticalAlign" : "flex-start"
           },
           "children" : [ {
             "children" : [ {
-              "attributes" : {
-                "dxpStyle" : { },
-                "imageInfos" : "",
-                "richTextValue" : "<div style=\"display: flex; justify-content: center; align-items: center; margin: 50px 0; flex-direction: column; text-align: center;\"><div style=\"background-image: url(assets/img/desert.svg) !important; background-size: cover; background-position: center; height: 300px; width: 100%; max-width: 600px; min-width: 300px;\"></div><h1 class=\"slds-text-heading_medium slds-p-bottom_x-small\">Start Building Your Page</h1> <div>Drag and drop a component into the content slots.</div></div>"
-              },
-              "definition" : "community_builder:htmlEditor",
-              "id" : "88d8af6f-f383-4b62-a87d-94c9a46789fd",
+              "attributes" : { },
+              "definition" : "c:navBar",
+              "id" : "9d5b8670-d1c9-486d-b948-cc5b9874b39c",
               "type" : "component"
             } ],
-            "id" : "71ee4aa0-02a8-4ad7-9f4a-fe92eb0a4e78",
+            "id" : "b2b56a50-3a93-4a5d-921d-c3d5b5763800",
             "name" : "col1",
             "title" : "Column 1",
             "type" : "region"
           } ],
           "definition" : "community_layout:section",
-          "id" : "1d9ba861-cbde-44ba-9f04-aec4f8771f8d",
+          "id" : "431f1301-3505-42a7-99e3-1c4aee6a216c",
+          "type" : "component"
+        }, {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"5eebd1dc-0bc5-4e1d-ac2a-64c112b09aec\",\"columns\":[{\"UUID\":\"75babdaf-abfd-4340-8253-17bcf263760c\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:itemList",
+              "id" : "a1511af9-c27f-454a-b700-11d7ee21b71d",
+              "type" : "component"
+            } ],
+            "id" : "75babdaf-abfd-4340-8253-17bcf263760c",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "5eebd1dc-0bc5-4e1d-ac2a-64c112b09aec",
           "type" : "component"
         } ],
         "id" : "41ba7d64-d602-41ae-8a00-34eb46630187",

@@ -1,0 +1,35 @@
+<template>
+    <!--<lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+    <lightning-input label="Price" value={price} onchange={handlePriceChange}></lightning-input>
+    <lightning-input label="Description" value={description} onchange={handleDescriptionChange}></lightning-input>
+    <lightning-input label="" value={name} onchange={handleNameChange}></lightning-input>
+    <lightning-button label="Add Item" onclick={saveItem}></lightning-button>
+    <lightning-combobox
+    name="status"
+    label="Item Status"
+    options={typeOptions}
+    onchange={handleTypeOptionsChange}>
+    </lightning-combobox>
+    <lightning-combobox
+    name="status"
+    label="Item Status"
+    options={familyOptions}
+    onchange={handleOptionsChange}>
+    </lightning-combobox>-->
+    <lightning-modal-header label="Add Item"></lightning-modal-header>
+    <lightning-modal-body> 
+        
+    <lightning-record-edit-form object-api-name="Item__c" onsuccess={handleSubmit}>
+        <lightning-input-field field-name="Name__c"></lightning-input-field>
+        <lightning-input-field field-name="Description__c"></lightning-input-field>
+        <lightning-input-field field-name="Price__c"></lightning-input-field>
+        <lightning-input-field field-name="Family__c"></lightning-input-field>
+        <lightning-input-field field-name="Type__c"></lightning-input-field>
+        <lightning-button type="submit" label="addItem"></lightning-button>
+    </lightning-record-edit-form>
+
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="Add" onclick={handleOkay}></lightning-button>
+    </lightning-modal-footer>
+</template>
