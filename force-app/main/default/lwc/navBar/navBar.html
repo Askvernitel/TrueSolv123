@@ -2,11 +2,14 @@
 	<header>
 		<nav class="nav-bar">
 			<lightning-button variant="base" label="Account Item" title="Looks like a link"
-				onclick={handleClick} class="slds-m-left_x-small">Account Item</lightning-button>
-			<div>{name}</div>
-			<div>Account Number</div>
-			<div>Account Industry</div>
-			<lightning-button variant="base" label="Cart" title="Looks like a link" onclick={handleClick}
+				 class="slds-m-left_x-small">Account Item</lightning-button>
+			<template if:true={account}>
+					<div>{accountName}</div>
+					<div>{accountIndustry}</div>
+					<div>{accountNumber}</div>
+			</template>
+			
+			<lightning-button variant="base" label="Cart" title="Looks like a link" 
 				class="slds-m-left_x-small">Cart</lightning-button>
 		</nav>
 	</header>

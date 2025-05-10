@@ -15,20 +15,14 @@ export default class ItemList extends LightningElement {
     
     async addItem(){
         const result = await addItemModal.open({
-            // `label` is not included here in this example.
-            // it is set on lightning-modal-header instead
             size: 'medium',
             description: 'Accessible description of modal\'s purpose',
-            //content: 'Passed into content api',
         });
-        // if modal closed with X button, promise returns result = 'undefined'
-        // if modal closed with OK button, promise returns result = 'okay'
         if (result == "okay"){
             this.loadAllItems();
             console.log("Items:", this.items)
         }else{
-        console.log("Result:" + JSON.stringify(result));
-
+            console.log("Result:" + JSON.stringify(result));
         }
     }
     loadAllItems(){

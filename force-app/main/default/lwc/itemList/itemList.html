@@ -1,6 +1,5 @@
 <template>
     <template if:true={items}>
-        HIHI
         <div style="width:700px; display:grid; grid-template-columns: auto auto auto;">
             <template for:each={items} for:item="item">
                 <c-item-card key={item.Id} card-item={item}></c-item-card>
