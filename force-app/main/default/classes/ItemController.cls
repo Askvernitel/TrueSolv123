@@ -39,5 +39,17 @@ public with sharing class ItemController {
             throw new AuraHandledException(e.getMessage());
         }
     }
-
+    @AuraEnabled
+    public static String getImageUrlByItemId(Id itemId){
+        try {
+            List<Item__c> item = [SELECT Image__c FROM Item__c WHERE Id = :itemId LIMIT 1];
+            if(item.isEmpty()){
+                return null;
+            }
+            String str = item[0].Image__c;
+            return str;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

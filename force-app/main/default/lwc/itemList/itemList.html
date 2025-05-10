@@ -1,11 +1,13 @@
 <template>
+    <c-item-search-bar></c-item-search-bar>
     <template if:true={items}>
-        <div style="width:700px; display:grid; grid-template-columns: auto auto auto;">
+
+        <div style="width:700px; display:grid; grid-template-columns: auto auto;">
             <template for:each={items} for:item="item">
                 <c-item-card key={item.Id} card-item={item}></c-item-card>
             </template>
         </div>
     </template>
    <!--<lightning-button variant="base" onclick={printAllItems} label="Print All Items">Print All Items</lightning-button>-->
-   <lightning-button variant="base" onclick={addItem} label="Add Item">Add Item</lightning-button>
+   <lightning-button variant="brand" onclick={addItem} label="Add Item">Add Item</lightning-button>
 </template>

@@ -1,15 +1,15 @@
 <template>
 	<header>
 		<nav class="nav-bar">
-			<lightning-button variant="base" label="Account Item" title="Looks like a link"
-				 class="slds-m-left_x-small">Account Item</lightning-button>
+			<lightning-button variant="brand" label="Create Item" title="Looks like a link"
+				 class="slds-m-left_x-small">Create Item</lightning-button>
 			<template if:true={account}>
 					<div>{accountName}</div>
 					<div>{accountIndustry}</div>
 					<div>{accountNumber}</div>
 			</template>
 			
-			<lightning-button variant="base" label="Cart" title="Looks like a link" 
+			<lightning-button variant="brand" label="Cart" title="Looks like a link" 
 				class="slds-m-left_x-small">Cart</lightning-button>
 		</nav>
 	</header>

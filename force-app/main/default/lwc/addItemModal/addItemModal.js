@@ -20,7 +20,7 @@ export default class AddItem extends LightningModal{
         insertItem({item:newItem.toObj()})
         .then(result => this.close("okay"))
         .catch(error => {console.log(error); this.close("okay")})
-        this.resetFields(inputFields) ;
+        //this.resetFields(inputFields) ;
     }
     handleOkay(){
         this.close("okay");

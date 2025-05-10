@@ -12,12 +12,13 @@ export default class ItemList extends LightningElement {
         this.loadAllItems();
     }
 
-    
+     
     async addItem(){
         const result = await addItemModal.open({
             size: 'medium',
-            description: 'Accessible description of modal\'s purpose',
         });
+
+
         if (result == "okay"){
             this.loadAllItems();
             console.log("Items:", this.items)
