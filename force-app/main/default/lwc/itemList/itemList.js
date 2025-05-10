@@ -4,11 +4,12 @@ import getAllItems from "@salesforce/apex/ItemController.getAllItems"
 import addItemModal from "c/addItemModal"
 import cleanUp from '@salesforce/apex/ItemController.cleanUp';
 export default class ItemList extends LightningElement {
-    items
+    @track items = [];
     
     constructor(){
         super();
         cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
+        this.loadAllItems();
     }
 
     
@@ -16,17 +17,25 @@ export default class ItemList extends LightningElement {
         const result = await addItemModal.open({
             // `label` is not included here in this example.
             // it is set on lightning-modal-header instead
-            size: 'large',
+            size: 'medium',
             description: 'Accessible description of modal\'s purpose',
-            content: 'Passed into content api',
+            //content: 'Passed into content api',
         });
         // if modal closed with X button, promise returns result = 'undefined'
         // if modal closed with OK button, promise returns result = 'okay'
-        console.log(result);
+        if (result == "okay"){
+            this.loadAllItems();
+            console.log("Items:", this.items)
+        }else{
+        console.log("Result:" + JSON.stringify(result));
+
+        }
     }
     loadAllItems(){
+        console.log("Getting All The Items");
         getAllItems().then((resp)=>{
+            console.log(resp);
             this.items = resp;
-        }).catch(console.error)
+        }).catch(console.error);
     }
 }

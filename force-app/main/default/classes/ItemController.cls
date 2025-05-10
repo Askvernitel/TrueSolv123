@@ -1,4 +1,5 @@
 public with sharing class ItemController {
+
     public ItemController() {
     }
     @AuraEnabled
@@ -14,10 +15,17 @@ public with sharing class ItemController {
     @AuraEnabled 
     public static Boolean insertItem(AddItemDTO item){
         try{ 
-            Item__c newItem = new Item__c(Name__c=item.name, Description__c=item.description,Family__c=item.family,Price__c=item.price);
+            System.debug(item);
+            Boolean isValid = Validator.checkItem(item);
+            System.debug(item.name);
+            if(!isValid){
+                throw new AuraHandledException('INVALID');
+            }
+            Item__c newItem = new Item__c(Name__c=item.name, Description__c=item.description,Family__c=item.family,Price__c=item.price, Type__c=item.type);
             insert newItem;
             return true;
         }catch(Exception e){
+            System.debug('Item Insert: ' + e.getMessage() + e.getCause() + e.getLineNumber() + e.getTypeName());
             throw new AuraHandledException(e.getMessage());
         }
     }
