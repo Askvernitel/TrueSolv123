@@ -13,4 +13,13 @@ public with sharing class UserController {
             return null;
         }
     }
+
+    @AuraEnabled
+    public static Boolean isManager(Id userId){
+        try {
+            return false;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

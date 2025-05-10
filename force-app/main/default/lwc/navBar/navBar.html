@@ -2,7 +2,7 @@
 	<header>
 		<nav class="nav-bar">
 			<lightning-button variant="brand" label="Create Item" title="Looks like a link"
-				 class="slds-m-left_x-small">Create Item</lightning-button>
+				onclick={handleCreateItem} class="slds-m-left_x-small">Create Item</lightning-button>
 			<template if:true={account}>
 					<div>{accountName}</div>
 					<div>{accountIndustry}</div>

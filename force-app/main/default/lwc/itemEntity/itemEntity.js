@@ -1,5 +1,3 @@
-
-
 export class ItemEntity{ 
     description;
     family;

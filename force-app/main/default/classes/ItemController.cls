@@ -52,4 +52,40 @@ public with sharing class ItemController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static List<String> getAllItemTypes(){
+        try {
+            Schema.DescribeFieldResult F = Item__c.Type__c.getDescribe();
+            List<Schema.PicklistEntry> P = F.getPicklistValues();
+            
+            List<String> types = new List<String>(); 
+            for(Schema.PicklistEntry val:P){
+
+                types.add(val.getLabel());
+            }
+            return types;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static List<String> getAllItemFamilies(){
+        try {
+            Schema.DescribeFieldResult F = Item__c.Family__c.getDescribe();
+            List<Schema.PicklistEntry> P = F.getPicklistValues();
+            
+            List<String> families = new List<String>(); 
+            for(Schema.PicklistEntry val:P){
+                families.add(val.getLabel());
+            }
+            return families;
+
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+
 }

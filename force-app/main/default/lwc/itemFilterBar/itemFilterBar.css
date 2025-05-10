@@ -1,0 +1,12 @@
+.custom-label{
+    color:black;
+    padding:0.5rem 1rem;
+    font-size:1.2rem;
+    text-decoration: underline;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;    
+}
