@@ -1,12 +1,15 @@
 import ItemDetailsModal from 'c/itemDetailsModal';
-import { api, LightningElement } from 'lwc';
+import { api, LightningElement, wire } from 'lwc';
 import imgURL from '@salesforce/resourceUrl/SiteSamples'
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import LightningToast from "lightning/toast"
-import ToastContainer from "lightning/toastContainer";;
+import ToastContainer from "lightning/toastContainer";
+import ADD_CART_CH from '@salesforce/messageChannel/AddToCart__c';
+import { MessageContext, publish } from 'lightning/messageService';
 //wish this was typescript would define item object
 export default class ItemCard extends LightningElement {
     @api cardItem;
+    @wire(MessageContext) messageContext;
     url = imgURL + '/img/clock.png';
     addedCount = 0;
     toastDelay;
@@ -37,5 +40,6 @@ export default class ItemCard extends LightningElement {
             },
             this,
           );
+        publish(this.messageContext, ADD_CART_CH, {message:this.cardItem});
     }
 }

@@ -4,7 +4,7 @@ import insertItem from '@salesforce/apex/ItemController.insertItem';
 import { ItemEntity } from 'c/itemEntity';
 
 //TODO: MAKE THIS THING WORK WITHOUT ERROR
-export default class AddItem extends LightningModal{
+export default class AddItemModal extends LightningModal{
 
 
     handleSubmit(event) {

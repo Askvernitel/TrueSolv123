@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
-    <masterLabel>Add Item</masterLabel>
+    <masterLabel>Cart Add</masterLabel>
     <description>Signal For Change</description>
     <isExposed>true</isExposed>
     <lightningMessageFields>
-        <fieldName>message</fieldName>
+        <fieldName>msg</fieldName>
     </lightningMessageFields>
 </MessageChannel>

@@ -1,0 +1,39 @@
+<template>
+    <lightning-modal-header label="Cart"></lightning-modal-header>
+    <lightning-modal-body>
+        
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={displayItems}
+                    show-row-number-column
+                    row-number-offset="0"
+                    hide-checkbox-column
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="Check Out" onclick={handleCheckout}></lightning-button>
+        <lightning-button label="Close" onclick={handleClose}></lightning-button>
+    </lightning-modal-footer>
+
+     <!--<lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+    <lightning-input label="Price" value={price} onchange={handlePriceChange}></lightning-input>
+    <lightning-input label="Description" value={description} onchange={handleDescriptionChange}></lightning-input>
+    <lightning-input label="" value={name} onchange={handleNameChange}></lightning-input>
+    <lightning-button label="Add Item" onclick={saveItem}></lightning-button>
+    <lightning-combobox
+    name="status"
+    label="Item Status"
+    options={typeOptions}
+    onchange={handleTypeOptionsChange}>
+    </lightning-combobox>
+    <lightning-combobox
+    name="status"
+    label="Item Status"
+    options={familyOptions}
+    onchange={handleOptionsChange}>
+    </lightning-combobox>-->
+
+</template>
