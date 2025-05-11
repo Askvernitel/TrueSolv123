@@ -1,4 +1,5 @@
-export function transformToRadioGroupArray(arr){
+export async function transformToRadioGroupArray(arr){
+
     return arr.map((item)=>{
         return {
             label: item,
@@ -7,7 +8,7 @@ export function transformToRadioGroupArray(arr){
     })};
 
 
-export function filterItemsByFilter(items, filterObj){
+export async function filterItemsByFamilyAndType(items, filterObj){
     if(filterObj == undefined) return items;
     let filter = filterObj.filterData 
     console.log("FILTER LOG:", filter);
@@ -21,4 +22,13 @@ export function filterItemsByFilter(items, filterObj){
     }else{
         return items;
     }
+}
+
+export async function filterItemsBySearchText(items, searchObj){
+    console.log("FILTER SEARCH TEXT:",searchObj);
+    return items.filter((item)=>{
+        const text = `${item.Description__c || ''} ${item.Name__c || ''}`.toLowerCase();
+        console.log("FILTER TEXT:", text);
+        return text.includes((searchObj.searchText || '').toLowerCase());
+    });
 }

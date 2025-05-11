@@ -17,6 +17,10 @@ public with sharing class UserController {
     @AuraEnabled
     public static Boolean isManager(Id userId){
         try {
+            List<User> users = [SELECT IsManager__c FROM User WHERE Id = :userId];
+            if(!users.isEmpty()){
+                return users[0].IsManager__c;
+            }
             return false;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

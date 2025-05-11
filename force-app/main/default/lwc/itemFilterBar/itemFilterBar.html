@@ -1,8 +1,14 @@
 <template>
     <div style="height: 700px; width:100%; background-color:white; border-radius:5px">
         <div class="flex-container">
-        <div style="display:flex; flex-direction:row; column-gap:5px">
-            <lightning-icon icon-name="action:new_note" alternative-text="New note" title="New note"></lightning-icon>
+        <div class="custom-label">
+                <div class="slds-p_small" style="display:flex; column-gap:5px;">
+                    <h3>Displayed Items Amount:</h3>
+                    <h2>{currentItemAmount}</h2>
+                </div>
+        </div>
+        <div style="display:flex; flex-direction:row; column-gap:5px;">
+            <lightning-icon icon-name="action:new_note" alternative-text="Filter" title="Filter"></lightning-icon>
             <h1 style="font-size:2rem;">Filters</h1>
         </div>
     
@@ -22,7 +28,10 @@
                 onchange={handleFamilyChange}
                 type="radio"></lightning-radio-group>
         </div>
-        <lightning-button variant="brand-outline" label="Filter" title="Filter" onclick={handleFilterClick} class="slds-m-left_x-small"></lightning-button>
-        </div>
+        <lightning-button variant="brand-outline" label="Filter" title="Filter" onclick={handleFilterClick} class="slds-m-left_x-small slds-p-top_small"></lightning-button>
+        
+        
+    </div>
+        
     </div>
 </template>
