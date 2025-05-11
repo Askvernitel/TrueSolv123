@@ -61,7 +61,6 @@ export default class NavBar extends LightningElement {
 
         if (result == "okay"){
 			publish(this.messageContext,ADD_ITEM_CH,null);
-            console.log("Items:", this.items)
         }else{
             console.log("Result:" + JSON.stringify(result));
         }

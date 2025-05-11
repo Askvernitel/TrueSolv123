@@ -1,13 +1,13 @@
 import { MessageContext, publish } from 'lightning/messageService';
 import { LightningElement, wire } from 'lwc';
-import DEFAULT_CH from '@salesforce/messageChannel/DefaultMessage__c';
+import SEARCH_CH from '@salesforce/messageChannel/SearchChannel__c';
 export default class ItemSearchBar extends LightningElement {
     @wire(MessageContext) MessageContext;
     searchText;
     handleChange(event){
         this.searchText = event.detail.value;
-        publish(this.MessageContext, DEFAULT_CH, {
-            msg:{searchText: this.searchText}});
+        publish(this.MessageContext, SEARCH_CH, {
+            search:{searchText: this.searchText}});
     }
 
     handleSearch(event){

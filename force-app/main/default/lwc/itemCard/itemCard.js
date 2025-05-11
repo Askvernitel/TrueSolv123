@@ -10,17 +10,21 @@ import { MessageContext, publish } from 'lightning/messageService';
 export default class ItemCard extends LightningElement {
     @api cardItem;
     @wire(MessageContext) messageContext;
-    url = imgURL + '/img/clock.png';
+    url='';
     addedCount = 0;
     toastDelay;
     constructor(){
         super();
-        console.log(this.cardItem)
     }
     connectedCallback() {
         const toastContainer = ToastContainer.instance();
         toastContainer.maxToasts = 4;
         toastContainer.toastPosition = "top-right";
+        console.log('CARD', this.cardItem);
+        console.log('URL', this.cardItem.Image__c);
+
+
+        this.url = this.cardItem.Image__c;
     }
 
     async handleDetailsClick(){

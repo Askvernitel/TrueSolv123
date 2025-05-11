@@ -4,10 +4,37 @@ import getAllItems from "@salesforce/apex/ItemController.getAllItems"
 import addItemModal from "c/addItemModal"
 import cleanUp from '@salesforce/apex/ItemController.cleanUp';
 import DEFAULT_CH from '@salesforce/messageChannel/DefaultMessage__c';
+import SEARCH_CH from '@salesforce/messageChannel/SearchChannel__c';
 import ADD_ITEM_CH from '@salesforce/messageChannel/AddItemChannel__c';
 import FILTER_ITEM_CH  from '@salesforce/messageChannel/FilterItemChannel__c';
 import { subscribe, MessageContext, publish} from 'lightning/messageService';
-import { filterItemsByFamilyAndType, filterItemsBySearchText } from 'c/helpers';
+
+
+async function filterItemsByFamilyAndType(items, filterObj){
+    if(filterObj == undefined) return items;
+    let filter = filterObj.filterData 
+    console.log("FILTER LOG:", filter);
+    if(filter.family && filter.type){
+        return items.filter(item=>item.Family__c===filter.family && item.Type__c===filter.type);
+
+    }else if(filter.family){
+        return items.filter(item=>item.Family__c===filter.family);
+    }else if(filter.type){
+        return items.filter(item=>item.Type__c===filter.type);
+    }else{
+        return items;
+    }
+}
+
+async function filterItemsBySearchText(items, searchObj){
+    console.log("FILTER SEARCH TEXT:",searchObj);
+    return items.filter((item)=>{
+        const text = `${item.Description__c || ''} ${item.Name__c || ''}`.toLowerCase();
+        console.log("FILTER TEXT:", text);
+        return text.includes((searchObj.searchText || '').toLowerCase());
+    });
+}
+
 export default class ItemList extends LightningElement {
     items = [];
     filteredItems = [];
@@ -16,6 +43,7 @@ export default class ItemList extends LightningElement {
 
     connectedCallback(){
         subscribe(this.messageContext, ADD_ITEM_CH, (message) => {
+            if(message != null) return;
             console.log("LOAD ITEMS MESSAGE");
             this.loadAllItems();
         });
@@ -23,14 +51,13 @@ export default class ItemList extends LightningElement {
             this.currentFilter = filterData;
             filterItemsByFamilyAndType(this.items, this.currentFilter).then((res)=>{console.log("RES1: ", res, this), this.filteredItems=res; this.updateAmount()});
         })
-        subscribe(this.messageContext, DEFAULT_CH, (message) => {
-            filterItemsBySearchText(this.items, message.msg).then((res)=>{
+        subscribe(this.messageContext, SEARCH_CH, (message) => {
+            filterItemsBySearchText(this.items, message.search).then((res)=>{
                 this.filteredItems=res;
                 this.updateAmount();
                 console.log("SEARCH RES:", res);
             }).catch(console.log);
         });
-
         this.loadAllItems();
     }
     updateAmount(){
@@ -40,7 +67,7 @@ export default class ItemList extends LightningElement {
 
     constructor(){
         super();
-        //cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
+        cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
     }
 
     loadAllItems(){

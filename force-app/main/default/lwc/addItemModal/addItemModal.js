@@ -2,7 +2,7 @@ import { LightningElement, track, wire } from 'lwc';
 import LightningModal from 'lightning/modal';
 import insertItem from '@salesforce/apex/ItemController.insertItem';
 import { ItemEntity } from 'c/itemEntity';
-
+import Id from '@salesforce/user/Id';
 //TODO: MAKE THIS THING WORK WITHOUT ERROR
 export default class AddItemModal extends LightningModal{
 
@@ -11,13 +11,18 @@ export default class AddItemModal extends LightningModal{
         console.log(event.detail);
         let inputFields = this.template.querySelectorAll('lightning-input-field');
         //insert item
-        const newItem = new ItemEntity(
-            event.detail.fields.Name__c,
-            event.detail.fields.Description__c,
-            event.detail.fields.Type__c,
-            event.detail.fields.Price__c,
-            event.detail.fields.Family__c);
-        insertItem({item:newItem.toObj()})
+        const fields = event.detail.fields
+
+        
+        const newItem = {
+            name :fields.Name__c.value,
+            description: fields.Description__c.value,
+            type: fields.Type__c.value,
+            price: fields.Price__c.value,
+            family: fields.Family__c.value,
+        }
+        
+        insertItem({jsonData:JSON.stringify(newItem)})
         .then(result => this.close("okay"))
         .catch(error => {console.log(error); this.close("okay")})
         //this.resetFields(inputFields) ;
