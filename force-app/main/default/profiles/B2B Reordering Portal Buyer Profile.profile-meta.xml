@@ -157,6 +157,36 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PurchaseLine__c.Amount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PurchaseLine__c.UnitCost__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Purchase__c.ClientId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Purchase__c.GrandTotal__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Purchase__c.Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Purchase__c.TotalItems__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>User.isManager__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -165,6 +195,12 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Item__c-Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>PurchaseLine__c-PurchaseLine Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Purchase__c-Purchase Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>User-User Layout</layout>

@@ -1,12 +1,14 @@
 <template>
+    <div style="width:1000px">
     <c-item-search-bar></c-item-search-bar>
     <template if:true={items}>
 
-        <div style="width:700px; display:grid; grid-template-columns: auto auto;">
-            <template for:each={items} for:item="item">
+        <div style="width:1000px; display:grid; grid-template-columns: auto auto;">
+            <template for:each={filteredItems} for:item="item">
                 <c-item-card key={item.Id} card-item={item}></c-item-card>
             </template>
         </div>
     </template>
+    </div>
    <!--<lightning-button variant="base" onclick={printAllItems} label="Print All Items">Print All Items</lightning-button>-->
 </template>

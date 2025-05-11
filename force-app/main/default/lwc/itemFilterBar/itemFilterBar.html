@@ -10,18 +10,19 @@
         <div >
                 <lightning-radio-group name="radioGroup1"
                 options={typeOptions}
-                value={value}
+                value={typeValue}
+                onchange={handleTypeChange}
                 type="radio"></lightning-radio-group>
         </div>
         <div class="custom-label">Item Family</div>
         <div >
                 <lightning-radio-group name="radioGroup2"
                 options={familyOptions}
-                value={value}
+                value={familyValue}
+                onchange={handleFamilyChange}
                 type="radio"></lightning-radio-group>
         </div>
-        
+        <lightning-button variant="brand-outline" label="Filter" title="Filter" onclick={handleFilterClick} class="slds-m-left_x-small"></lightning-button>
         </div>
     </div>
-
 </template>
