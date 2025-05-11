@@ -37,6 +37,7 @@ public with sharing class ItemController {
     @AuraEnabled 
     public static Boolean insertItem(String jsonData){
         //try{
+            System.debug(jsonData);
             Map<String, Object> data = (Map<String, Object>) JSON.deserializeUntyped(jsonData);
             String name = (String) data.get('name');
             String description = (String) data.get('description');

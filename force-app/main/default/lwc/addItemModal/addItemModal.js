@@ -21,7 +21,7 @@ export default class AddItemModal extends LightningModal{
             price: fields.Price__c.value,
             family: fields.Family__c.value,
         }
-        
+        console.log("NEW ITEM ", JSON.stringify(newItem)); 
         insertItem({jsonData:JSON.stringify(newItem)})
         .then(result => this.close("okay"))
         .catch(error => {console.log(error); this.close("okay")})

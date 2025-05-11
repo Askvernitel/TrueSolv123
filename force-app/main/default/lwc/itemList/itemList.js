@@ -67,7 +67,7 @@ export default class ItemList extends LightningElement {
 
     constructor(){
         super();
-        cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
+        //cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
     }
 
     loadAllItems(){
@@ -75,7 +75,6 @@ export default class ItemList extends LightningElement {
         getAllItems().then((resp)=>{
             console.log("ITEM RESPONSE: ", resp);
             this.items = resp;
-            console.log("THIS: ", this)
             filterItemsByFamilyAndType(this.items, this.currentFilter).then((res)=>{ console.log("RES2: ", res, this); this.filteredItems=res;
 
             this.updateAmount();
