@@ -8,6 +8,7 @@ export async function transformToRadioGroupArray(arr){
     })};
 
 
+/*
 export async function filterItemsByFamilyAndType(items, filterObj){
     if(filterObj == undefined) return items;
     let filter = filterObj.filterData 
@@ -31,4 +32,4 @@ export async function filterItemsBySearchText(items, searchObj){
         console.log("FILTER TEXT:", text);
         return text.includes((searchObj.searchText || '').toLowerCase());
     });
-}
+}*/

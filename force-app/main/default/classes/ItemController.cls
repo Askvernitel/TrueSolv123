@@ -81,6 +81,18 @@ public with sharing class ItemController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+    @AuraEnabled
+    public static Item__c getItemById(Id itemId){
+        try {
+            List<Item__c> item = [SELECT Name__c, Price__c, Image__c, Description__c, Family__c, Type__c FROM Item__c WHERE Id = :itemId LIMIT 1];
+            if(item.isEmpty()){
+                return null;
+            }
+            return item[0];
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 
     @AuraEnabled
     public static List<String> getAllItemTypes(){

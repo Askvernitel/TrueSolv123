@@ -1,5 +1,6 @@
 import { api } from 'lwc';
 import LightningModal from 'lightning/modal';
+import Id from '@salesforce/user/Id';
 const columns = [
     { label: 'Name', fieldName: 'Name__c' },
     { label: 'Description', fieldName: 'Description__c',  },
@@ -22,6 +23,8 @@ export default class CartItemsModal extends LightningModal {
         console.log(JSON.stringify(this.displayItems));
     }
     handleCheckout(){
+        console.log(Id);
+        let idAmountArray= this.cartItems.map((obj)=>{return {itemId:obj.item.Id , amount:obj.amount}});
         this.close('checkout');
     }
     handleClose(){

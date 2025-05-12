@@ -68,7 +68,7 @@ export default class ItemList extends LightningElement {
 
     constructor(){
         super();
-        cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
+        //cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
     }
 
     async loadAllItems(){
