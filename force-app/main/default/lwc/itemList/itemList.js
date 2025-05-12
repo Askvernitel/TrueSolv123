@@ -14,6 +14,7 @@ async function filterItemsByFamilyAndType(items, filterObj){
     if(filterObj == undefined) return items;
     let filter = filterObj.filterData 
     console.log("FILTER LOG:", filter);
+    console.log("CALLED FILTER FAMILY");
     if(filter.family && filter.type){
         return items.filter(item=>item.Family__c===filter.family && item.Type__c===filter.type);
 
@@ -52,7 +53,7 @@ export default class ItemList extends LightningElement {
             filterItemsByFamilyAndType(this.items, this.currentFilter).then((res)=>{console.log("RES1: ", res, this), this.filteredItems=res; this.updateAmount()});
         })
         subscribe(this.messageContext, SEARCH_CH, (message) => {
-            filterItemsBySearchText(this.items, message.search).then((res)=>{
+            filterItemsBySearchText(this.filteredItems, message.search).then((res)=>{
                 this.filteredItems=res;
                 this.updateAmount();
                 console.log("SEARCH RES:", res);
@@ -67,10 +68,10 @@ export default class ItemList extends LightningElement {
 
     constructor(){
         super();
-        //cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
+        cleanUp().then((resp)=>{console.log(resp)}).catch(console.error);//for test purposes
     }
 
-    loadAllItems(){
+    async loadAllItems(){
         console.log("Getting All The Items");
         getAllItems().then((resp)=>{
             console.log("ITEM RESPONSE: ", resp);

@@ -42,6 +42,14 @@ export default class ItemFilterBar extends LightningElement {
             }
         )
     }
+    handleResetClick(){
+            publish(this.messageContext, FILTER_ITEM_CH, {
+                filterData: {
+                family:'', 
+                type: ''}
+            }
+        )
+    }
 
     handleFamilyChange(event){
         this.familyValue = event.detail.value

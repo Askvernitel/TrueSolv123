@@ -36,15 +36,15 @@ public with sharing class ItemController {
     
     @AuraEnabled 
     public static Boolean insertItem(String jsonData){
-        //try{
             System.debug(jsonData);
             Map<String, Object> data = (Map<String, Object>) JSON.deserializeUntyped(jsonData);
-            String name = (String) data.get('name');
-            String description = (String) data.get('description');
-            String family = (String) data.get('family');
-            String type = (String) data.get('type');
-            Decimal price = Decimal.valueOf(String.valueOf(data.get('price')));
-            AddItemDTO item = new AddItemDTO(name,description,price,type,family);
+            String name = (String) data.get('Name__c');
+            String description = (String) data.get('Description__c');
+            String family = (String) data.get('Family__c');
+            String type = (String) data.get('Type__c');
+            Decimal price = Decimal.valueOf(String.valueOf(data.get('Price__c')));
+            System.debug('PRICE: '+price);
+           // AddItemDTO item = new AddItemDTO(name,description,price,type,family);
             //Boolean isValid = Validator.checkItem(item);
             /*if(!isValid){
                 throw new AuraHandledException('INVALID');
@@ -52,13 +52,11 @@ public with sharing class ItemController {
             String rawJson =UnsplashAPIService.getImage(name);
             String url = UnsplashAPIService.urlExtract(rawJson);
             System.debug(url);
-            Item__c newItem = new Item__c(Name__c=item.name, Description__c=item.description,Family__c=item.family,Price__c=item.price, Type__c=item.type, Image__c=url);
+            Item__c newItem = new Item__c(Name__c=name, Description__c=description,Family__c=family,Price__c=price, Type__c=type, Image__c=url);
             insert newItem;
             return true;
-        /*}catch(Exception e){
-            System.debug('Item Insert: ' + e.getMessage() + e.getCause() + e.getLineNumber() + e.getTypeName());
-            throw new AuraHandledException(e.getMessage());
-        }*/
+    /*        System.debug('Item Insert: ' + e.getMessage() + e.getCause() + e.getLineNumber() + e.getTypeName());
+            throw new AuraHandledException(e.getMessage());*/
     }
 
     @AuraEnabled

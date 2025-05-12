@@ -19,7 +19,7 @@ export default class ItemCard extends LightningElement {
     connectedCallback() {
         const toastContainer = ToastContainer.instance();
         toastContainer.maxToasts = 4;
-        toastContainer.toastPosition = "top-right";
+        toastContainer.toastPosition = "top-left";
         console.log('CARD', this.cardItem);
         console.log('URL', this.cardItem.Image__c);
 

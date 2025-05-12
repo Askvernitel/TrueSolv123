@@ -7,20 +7,18 @@ import Id from '@salesforce/user/Id';
 export default class AddItemModal extends LightningModal{
 
 
-    handleSubmit(event) {
-        console.log(event.detail);
-        let inputFields = this.template.querySelectorAll('lightning-input-field');
+    handleSubmit() {
         //insert item
-        const fields = event.detail.fields
+        const inputFields = this.template.querySelectorAll('lightning-input-field');
+        const newItem = {};
 
-        
-        const newItem = {
-            name :fields.Name__c.value,
-            description: fields.Description__c.value,
-            type: fields.Type__c.value,
-            price: fields.Price__c.value,
-            family: fields.Family__c.value,
-        }
+        inputFields.forEach(field => {
+            const fieldName = field.fieldName;
+            const value = field.value;
+            console.log("VALUE: ", value);
+            newItem[fieldName] = value;
+        }); 
+        console.log("ITEM", JSON.stringify(newItem));
         console.log("NEW ITEM ", JSON.stringify(newItem)); 
         insertItem({jsonData:JSON.stringify(newItem)})
         .then(result => this.close("okay"))

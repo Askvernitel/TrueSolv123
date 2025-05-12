@@ -19,7 +19,7 @@
     <lightning-modal-header label="Add Item"></lightning-modal-header>
     <lightning-modal-body> 
         
-    <lightning-record-edit-form object-api-name="Item__c" onsuccess={handleSubmit} onerror={handleError}>
+    <lightning-record-edit-form object-api-name="Item__c" onerror={handleError}>
         <lightning-input-field field-name="Name__c"></lightning-input-field>
         <lightning-input-field field-name="Description__c"></lightning-input-field>
         <lightning-input-field field-name="Price__c"></lightning-input-field>
@@ -27,7 +27,7 @@
         <lightning-input-field field-name="Type__c"></lightning-input-field>
         <!--<lightning-button type="submit" label="addItem"></lightning-button>-->
         <lightning-modal-footer>
-            <lightning-button type="submit" label="Add"></lightning-button>
+            <lightning-button type="button" onclick={handleSubmit} label="Add"></lightning-button>
         </lightning-modal-footer>
     </lightning-record-edit-form>
 
