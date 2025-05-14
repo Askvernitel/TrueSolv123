@@ -53,7 +53,7 @@ export default class ItemList extends LightningElement {
             filterItemsByFamilyAndType(this.items, this.currentFilter).then((res)=>{console.log("RES1: ", res, this), this.filteredItems=res; this.updateAmount()});
         })
         subscribe(this.messageContext, SEARCH_CH, (message) => {
-            filterItemsBySearchText(this.filteredItems, message.search).then((res)=>{
+            filterItemsBySearchText(this.items, message.search).then((res)=>{
                 this.filteredItems=res;
                 this.updateAmount();
                 console.log("SEARCH RES:", res);

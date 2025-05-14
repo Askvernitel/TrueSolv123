@@ -8,7 +8,7 @@ const columns = [
     { label: 'Type', fieldName: 'Type__c',  },
     { label: 'Family', fieldName: 'Family__c',   },
     { label: 'Price', fieldName: 'Price__c', type: 'currency' },
-    { label: 'Image', fieldName: 'ImageUrl__c'},
+    { label: 'Image Url', fieldName: 'Image__c'},
     { label: 'Amount', fieldName: 'amount'}
 ];
 export default class CartItemsModal extends LightningModal {

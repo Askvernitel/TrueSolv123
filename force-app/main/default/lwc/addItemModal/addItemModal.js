@@ -8,7 +8,6 @@ export default class AddItemModal extends LightningModal{
 
 
     handleSubmit() {
-        //insert item
         const inputFields = this.template.querySelectorAll('lightning-input-field');
         const newItem = {};
 
@@ -20,7 +19,7 @@ export default class AddItemModal extends LightningModal{
         }); 
         console.log("ITEM", JSON.stringify(newItem));
         console.log("NEW ITEM ", JSON.stringify(newItem)); 
-        insertItem({jsonData:JSON.stringify(newItem)})
+        insertItem({userId:Id, jsonData:JSON.stringify(newItem)})
         .then(result => this.close("okay"))
         .catch(error => {console.log(error); this.close("okay")})
         //this.resetFields(inputFields) ;

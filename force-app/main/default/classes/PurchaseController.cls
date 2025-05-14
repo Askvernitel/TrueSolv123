@@ -6,6 +6,9 @@ public with sharing class PurchaseController {
     //it is more logical to return reason but i return bool
     @AuraEnabled
     public static Boolean makePurchase(Id userId, String itemIdsJson) {
+        if(userId != UserInfo.getUserId()){
+            return false;
+        }
         System.debug('ITEMS ' + itemIdsJson);
         List<Object> data = (List<Object>) JSON.deserializeUntyped(itemIdsJson);
         System.debug(data);

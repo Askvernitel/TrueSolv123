@@ -38,7 +38,10 @@ public with sharing class ItemController {
     }
     
     @AuraEnabled 
-    public static Boolean insertItem(String jsonData){
+    public static Boolean insertItem(Id userId, String jsonData){
+            if(userId != UserInfo.getUserId() || !UserController.IsManager(userId)){
+                return false;
+            }
             System.debug(jsonData);
             Map<String, Object> data = (Map<String, Object>) JSON.deserializeUntyped(jsonData);
             String name = (String) data.get('Name__c');

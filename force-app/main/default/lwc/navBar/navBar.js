@@ -6,8 +6,12 @@ import CartItemsModal from "c/cartItemsModal";
 import { publish, MessageContext, subscribe } from 'lightning/messageService';
 import ADD_ITEM_CH from '@salesforce/messageChannel/AddItemChannel__c';
 import ADD_CART_CH from '@salesforce/messageChannel/AddToCart__c'
+import isManager from '@salesforce/apex/UserController.isManager';
+import makeManager from '@salesforce/apex/UserController.makeManager';
 export default class NavBar extends LightningElement {
     account = {};
+	isNotManager = true;
+	
 	cartItems;
 	@wire(MessageContext) messageContext;
 	constructor(){
@@ -21,7 +25,11 @@ export default class NavBar extends LightningElement {
 		}).catch((error)=>{
 			console.log(error);
 		}
-		)
+		);
+		isManager({userId:Id}).then((resp)=>{
+			console.log("MANAGER", resp);
+			this.isNotManager = !resp;
+		}).catch(console.log);
 		subscribe(this.messageContext, ADD_CART_CH, (message) => {
 			this.addItemToCart(message);
 		})
