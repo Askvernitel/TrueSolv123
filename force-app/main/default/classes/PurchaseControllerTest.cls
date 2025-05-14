@@ -24,6 +24,7 @@ private class PurchaseControllerTest {
 
     @isTest
     static void makePurchaseTest() {
+        //----prepare creds
         Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
         User testUser = new User(
             Username = 'runas@example.com',
@@ -40,12 +41,16 @@ private class PurchaseControllerTest {
         insert testUser;
         Account testAccount = new Account(Name='testAccount', OwnerId=testuser.Id);
         insert testAccount;
+        //----prepare items
         String testName = 'testName';
         String testDesc = 'testDesc';
-        String testFamily = 'testFamily';
+        String testFamily = 'ELECTRONICS';
         Integer testPrice = 100;
-        String testType = 'testType';
+        String testType = 'BEVERAGE';
         String testUrl = 'http://test.idk.cool.site.com';
+
+        Item__c newItem = new Item__c(Name__c=testName, Description__c=testDesc,Family__c=testFamily,Price__c=testPrice, Type__c=testType, Image__c=testUrl);
+        insert newItem;
 
 
         List<Item__c> testItems = [SELECT Id,Price__c FROM Item__c LIMIT 5];
@@ -65,9 +70,10 @@ private class PurchaseControllerTest {
         }
         List<Map<String,Object>> jsonMap = new List<Map<String,Object>>();
         for(Integer i = 0;i < testItems.size();i++){
-            Map<Object,Object> jsonPurchasedMap = new Map<Object,Object>();
+            Map<String,Object> jsonPurchasedMap = new Map<String,Object>();
             jsonPurchasedMap.put('itemId', testItems[i].Id);
             jsonPurchasedMap.put('amount', amounts[i]);
+            jsonMap.add(jsonPurchasedMap);
         }
 
         String jsonData = JSON.serialize(jsonMap);
@@ -80,7 +86,8 @@ private class PurchaseControllerTest {
 
         Id testAccountId = testAccount.Id;
         List<Purchase__c> createdPurchases = [SELECT Id, TotalItems__c, Grandtotal__c FROM Purchase__c WHERE Id NOT IN :testPurchases LIMIT 1];
-        List<PurchaseLine__c> createdPurchaseLines = [SELECT Id FROM PurchaseLine__c WHERE Id NOT IN :testPurchaseLines];
+        List<PurchaseLine__c> createdPurchaseLines = [SELECT Id FROM PurchaseLine__c];
+
         System.assert(purchaseMade, 'Purchase Not Made');
         System.assert(createdPurchaseLines.size() == testItems.size(), 'Incorrect Amount Of Items Created');
         System.assert(!createdPurchases.isEmpty(), 'Purchase Not Added');

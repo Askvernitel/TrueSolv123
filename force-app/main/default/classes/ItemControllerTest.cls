@@ -41,9 +41,9 @@ private class ItemControllerTest {
         insert testAccount;
         String testName = 'testName';
         String testDesc = 'testDesc';
-        String testFamily = 'testFamily';
+        String testFamily = 'ELECTRONICS';
         Integer testPrice = 100;
-        String testType = 'testType';
+        String testType = 'BEVERAGE';
         String testUrl = 'http://test.idk.cool.site.com';
 
         Item__c newItem = new Item__c(Name__c=testName, Description__c=testDesc,Family__c=testFamily,Price__c=testPrice, Type__c=testType, Image__c=testUrl);
