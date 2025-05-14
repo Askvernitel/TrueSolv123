@@ -10,6 +10,8 @@ public with sharing class ItemController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    //NOTE: not used
     @AuraEnabled
     public static List<Item__c> filterItemsBySearchText(String searchText) {
         System.debug(searchText);
@@ -22,6 +24,7 @@ public with sharing class ItemController {
                                OR Description__c LIKE :('%' + searchText + '%')];
         return items;
     }
+    //NOTE: not used
     @AuraEnabled 
     public static List<Item__c> filterItemsByFamilyAndType(String family, String type){
             if(family == 'All' && type == 'All'){
