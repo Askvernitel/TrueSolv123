@@ -2,7 +2,9 @@ import { api } from 'lwc';
 import LightningModal from 'lightning/modal';
 import makePurchase from '@salesforce/apex/PurchaseController.makePurchase';
 import Id from '@salesforce/user/Id';
+
 const columns = [
+
     { label: 'Name', fieldName: 'Name__c' },
     { label: 'Description', fieldName: 'Description__c',  },
     { label: 'Type', fieldName: 'Type__c',  },
@@ -26,10 +28,11 @@ export default class CartItemsModal extends LightningModal {
     handleCheckout(){
         console.log(Id);
         let idAmountArray= this.cartItems.map((obj)=>{return {itemId:obj.item.Id , amount:obj.amount}});
+        
         makePurchase({userId:Id, itemIdsJson:JSON.stringify(idAmountArray)}).then((resp)=>{
             console.log(resp);
-        }).catch((error)=>console.log(error));
-        this.close('checkout');
+            this.close("checkout")
+        }).catch((error)=>{console.log(error); this.close("close")});
     }
     handleClose(){
         this.close("close");

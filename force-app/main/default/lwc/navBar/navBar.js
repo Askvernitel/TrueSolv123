@@ -8,7 +8,8 @@ import ADD_ITEM_CH from '@salesforce/messageChannel/AddItemChannel__c';
 import ADD_CART_CH from '@salesforce/messageChannel/AddToCart__c'
 import isManager from '@salesforce/apex/UserController.isManager';
 import makeManager from '@salesforce/apex/UserController.makeManager';
-export default class NavBar extends LightningElement {
+import {NavigationMixin} from 'lightning/navigation';
+export default class NavBar extends NavigationMixin(LightningElement) {
     account = {};
 	isNotManager = true;
 	
@@ -42,6 +43,20 @@ export default class NavBar extends LightningElement {
 				console.log("KEY:", key, "VAL:", this.cartItems.get(key).item);
 			}
 	}
+
+	navigateToPurchaseLayout(){
+		this[NavigationMixin.Navigate]({
+				type: 'standard__objectPage',
+				attributes: {
+					objectApiName: 'Purchase__c',
+					actionName: 'list'
+				},
+				state: {
+                filterName: 'All' 
+				}
+			});
+	}
+
 	async handleCartClick(){
 		try{
 			const cartArray = Array.from(this.cartItems.values()) || [];
@@ -53,9 +68,11 @@ export default class NavBar extends LightningElement {
 				},this
 			)
 			console.log(result);
-			if(result == "checkout"){
+			if(result === "checkout"){
 				this.cartItems=new Map();
-			}else if(result == "close"){
+				this.navigateToPurchaseLayout();
+			
+			}else if(result === "close"){
 				console.log("Closed");
 			}
 		}catch(e){
