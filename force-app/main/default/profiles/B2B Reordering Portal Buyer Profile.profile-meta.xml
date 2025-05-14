@@ -101,6 +101,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PurchaseController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SiteLoginController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -114,6 +118,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>SiteRegisterControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>UnsplashAPIService</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -190,6 +198,9 @@
         <field>User.isManager__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <layoutAssignments>
+        <layout>Account-Account Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>CommunityMemberLayout-Community Member Layout</layout>
     </layoutAssignments>
@@ -299,6 +310,10 @@
     </pageAccesses>
     <tabVisibilities>
         <tab>Item_Purchase_Tool</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Purchase__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>External Apps Login</userLicense>

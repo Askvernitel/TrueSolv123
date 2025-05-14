@@ -1,7 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import LightningModal from 'lightning/modal';
 import insertItem from '@salesforce/apex/ItemController.insertItem';
-import { ItemEntity } from 'c/itemEntity';
 import Id from '@salesforce/user/Id';
 //TODO: MAKE THIS THING WORK WITHOUT ERROR
 export default class AddItemModal extends LightningModal{

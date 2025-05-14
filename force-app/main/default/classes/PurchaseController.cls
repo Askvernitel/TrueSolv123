@@ -27,6 +27,9 @@ public with sharing class PurchaseController {
             Id itemId = Id.valueOf(((String)it.get('itemId')));
             System.debug('ItemID ' + itemId);
             Integer amount = Integer.valueOf(String.valueOf(it.get('amount')));
+            if(amount <= 0){
+                return false;
+            }
             System.debug('amount ' + amount);
             Item__c item = ItemController.getItemById(itemId);
             PurchaseLine__c currentPurchaseLine = new PurchaseLine__c(ItemId__c=itemId, Amount__c=amount, UnitCost__c=item.Price__c);
