@@ -1,7 +1,32 @@
 <template>
-    <lightning-modal-header label="Details"></lightning-modal-header>
-    <lightning-modal-body>{itemData.Description__c}</lightning-modal-body>
-    <lightning-modal-footer>
-        <lightning-button style="margin:auto" label="Close" onclick={handleClose}></lightning-button>
-    </lightning-modal-footer> 
+   <lightning-modal-header label="Details"></lightning-modal-header>
+
+<lightning-modal-body>
+    <lightning-card title={itemData.Name__c}>
+        <div class="slds-p-around_medium">
+            <p class="slds-text-body_regular slds-m-bottom_small">
+                <strong>Description:</strong> {itemData.Description__c}
+            </p>
+            <p class="slds-text-body_regular slds-m-bottom_small">
+                <strong>Price:</strong> {itemData.Price__c}$
+            </p>
+            <p class="slds-text-body_regular slds-m-bottom_small">
+                <strong>Type:</strong> {itemData.Type__c}
+            </p>
+            <p class="slds-text-body_regular slds-m-bottom_small">
+                <strong>Family:</strong> {itemData.Family__c}
+            </p>
+            <div class="slds-m-top_medium slds-align_absolute-center">
+                <img src={itemData.Image__c} alt="Item Image" style="max-width: 100%;" />
+            </div>
+        </div>
+    </lightning-card>
+</lightning-modal-body>
+
+<lightning-modal-footer>
+    <div class="slds-text-align_center">
+        <lightning-button label="Close" onclick={handleClose}></lightning-button>
+    </div>
+</lightning-modal-footer>
+
 </template>
